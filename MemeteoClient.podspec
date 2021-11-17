@@ -28,14 +28,14 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/Roger Ingouacka/MemeteoClient.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'MemeteoClient/Classes/**/*.swift'
   
-  s.dependency 'Alamofire'
-  s.dependency 'AlamofireObjectMapper'
-  s.dependency 'ObjectMapper'
-  s.dependency 'SwiftyJSON'
+   s.dependency 'AlamofireObjectMapper', '5.2.1'
+   s.dependency 'Alamofire', '4.8.2'
+   s.dependency 'ObjectMapper', '3.4.2'
+   s.dependency 'SwiftyJSON', '~> 4.1.0'
 
   
 end
