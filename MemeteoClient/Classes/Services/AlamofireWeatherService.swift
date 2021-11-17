@@ -10,6 +10,7 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
+
 public typealias WeatherResult = (_ weather: MMWeatherModel?, _ error: Error?) -> ()
 public typealias ForecastResult = (_ weather: MMForecast?, _ error: Error?) -> ()
 
@@ -27,7 +28,8 @@ public class AlamofireWeatherService: AlamofireService, WeatherService {
     
     public func fetchCurrentLocationForecast(lat: String, long: String, completion: @escaping ForecastResult) {
         
-        get(at: .fetchCurrentLocationForecast(lat, long), params: nil).responseObject { (res:DataResponse<ApiForecast, AFError>) in
+        
+        get(at: .fetchCurrentLocationForecast(lat, long), params: nil).responseObject { (res:DataResponse<ApiForecast>) in
             // save in back
             
             if let forecast = res.value {
@@ -42,7 +44,7 @@ public class AlamofireWeatherService: AlamofireService, WeatherService {
     
     public func fetchLocationForecast(city: String, completion: @escaping ForecastResult) {
         
-        get(at: .fetchLocationForecast(city), params: nil).responseObject { (res:DataResponse<ApiForecast, AFError>) in
+        get(at: .fetchLocationForecast(city), params: nil).responseObject { (res:DataResponse<ApiForecast>) in
             // save in back
             
             if let forecasts = res.value?.list as? [ApiForecast] {
@@ -67,7 +69,7 @@ public class AlamofireWeatherService: AlamofireService, WeatherService {
     public func fetchCurrentLocationWeather(lat: String, long: String, completion: @escaping WeatherResult) {
         
     
-        get(at: .fetchCurrentLocationWeather(lat, long), params: nil).responseObject { (res: DataResponse<ApiWeatherModel,AFError>) in
+        get(at: .fetchCurrentLocationWeather(lat, long), params: nil).responseObject { (res: DataResponse<ApiWeatherModel>) in
                         
             
             if let weather = res.value {
@@ -86,7 +88,7 @@ public class AlamofireWeatherService: AlamofireService, WeatherService {
     
     public func fetchWeather(city: String, completion: @escaping WeatherResult) {
         
-        get(at: .fetchCurrentWeather(city), params: nil).responseObject { (res: DataResponse<ApiWeatherModel,AFError>) in
+        get(at: .fetchCurrentWeather(city), params: nil).responseObject { (res: DataResponse<ApiWeatherModel>) in
             
             completion(res.value, res.error)
         }

@@ -64,7 +64,7 @@ public class AlamofireService {
 
         print("URL \(url)")
         
-        return AF.request(request as URLRequestConvertible)
+        return Alamofire.request(request as URLRequestConvertible)
             .validate({ (request, response, data) -> Request.ValidationResult in
                 if let data = data {
                     do {
@@ -79,12 +79,13 @@ public class AlamofireService {
                             }
                         }
                     } catch {
-                        return .success(())
+                        return Request.ValidationResult.success
                      //   Request.ValidationResult.success(Void)
                       //  return Request.ValidationResult.success
                     }
                 }
-                return .success(())
+                
+                return Request.ValidationResult.success
               //  return Request.ValidationResult.success
             })
             .validate()
